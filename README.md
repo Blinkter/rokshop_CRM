@@ -1,2 +1,2 @@
-# rokshop_CRM
-Spacecraft Workshop Created for programming boot camp Coders Lab.
+# Spacecraft Workshop
+Created for programming boot camp Coders Lab.
