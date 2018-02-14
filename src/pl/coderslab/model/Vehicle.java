@@ -1,6 +1,6 @@
 package pl.coderslab.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Vehicle {
 
@@ -19,6 +19,9 @@ public class Vehicle {
 		setReg_number(reg_number);
 		setNext_service(next_service);
 		setCustomer_id(customer_id);
+	}
+
+	public Vehicle() {
 	}
 
 	public String getBrand() {
@@ -71,6 +74,10 @@ public class Vehicle {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override

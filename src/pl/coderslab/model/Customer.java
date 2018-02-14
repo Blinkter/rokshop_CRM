@@ -1,6 +1,6 @@
 package pl.coderslab.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer {
 
@@ -8,6 +8,9 @@ public class Customer {
 	private String firstname;
 	private String surname;
 	private Date birthday;
+
+	public Customer() {
+	}
 
 	public Customer(String firstname, String surname, Date birthday) {
 		setFirstname(firstname);
@@ -41,6 +44,10 @@ public class Customer {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override

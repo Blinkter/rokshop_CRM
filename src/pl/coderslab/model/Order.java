@@ -1,6 +1,6 @@
 package pl.coderslab.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Order {
 
@@ -15,7 +15,10 @@ public class Order {
 	private int order_vehicle_id;
 	private double repair_cost_for_customer;
 	private double parts_cost;
-	private int hours_amount;
+	private double hours_amount;
+
+	public Order() {
+	}
 
 	public Order(Date accepted, Date lanned_begin, Date begin, int order_employee_id, String problem_description,
 			String repair_description, String status, int order_vehicle_id, double repair_cost_for_customer,
@@ -114,16 +117,20 @@ public class Order {
 		this.parts_cost = parts_cost;
 	}
 
-	public int getHours_amount() {
+	public double getHours_amount() {
 		return hours_amount;
 	}
 
-	public void setHours_amount(int hours_amount) {
+	public void setHours_amount(double hours_amount) {
 		this.hours_amount = hours_amount;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override

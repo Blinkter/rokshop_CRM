@@ -1,18 +1,17 @@
 package pl.coderslab.model;
 
-public class Empolyee {
+public class Employee {
 
 	private int id;
-	private String first_name;
+	private String firstname;
 	private String surname;
 	private String address;
 	private int phone_number;
 	private String note;
 	private Double hour_rate;
 
-	public Empolyee(String first_name, String surname, String address, int phone_number, String note,
-			Double hour_rate) {
-		setFirst_name(first_name);
+	public Employee(String firstname, String surname, String address, int phone_number, String note, Double hour_rate) {
+		setFirst_name(firstname);
 		setSurname(surname);
 		setAddress(address);
 		setPhone_number(phone_number);
@@ -20,12 +19,15 @@ public class Empolyee {
 		setHour_rate(hour_rate);
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public Employee() {
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirst_name(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getSurname() {
@@ -72,9 +74,14 @@ public class Empolyee {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+
+	}
+
 	@Override
 	public String toString() {
-		return "Empolyee [id=" + id + ", first_name=" + first_name + ", surname=" + surname + ", address=" + address
+		return "Empolyee [id=" + id + ", first_name=" + firstname + ", surname=" + surname + ", address=" + address
 				+ ", phone_number=" + phone_number + ", note=" + note + ", hour_rate=" + hour_rate + "]";
 	}
 
