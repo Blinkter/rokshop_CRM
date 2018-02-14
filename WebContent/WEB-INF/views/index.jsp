@@ -6,11 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
+	<div class="container">
+	
 	<%@ include file="../header.jsp" %>
 	<h1>Aktualnie prowadzone naprawy</h1>
-	<table border=1>
+	<table class="table table-striped">
 		<tr>
 			<th>Data przyjęcia do naprawy</th>
 			<th>Data rozpoczęcia do naprawy</th>
@@ -25,5 +28,6 @@
  		</c:forEach>
 	</table>
 	<%@ include file="../footer.jsp" %>
+	</div>
 </body>
 </html>
