@@ -3,7 +3,6 @@ package pl.coderslab.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.OrderDao;
-import pl.coderslab.model.Order;
+import pl.coderslab.dao.CustomerDao;
+import pl.coderslab.model.Customer;
 import pl.coderslab.service.DbUtil;
 
 /**
- * Servlet implementation class index
+ * Servlet implementation class CustomerDelete
  */
-@WebServlet("/index")
-public class Index extends HttpServlet {
+@WebServlet("/customerDelete")
+public class CustomerDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public CustomerDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,29 +33,34 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String status = "W naprawie";
 		try {
+			int id = Integer.parseInt(request.getParameter("id"));
 			Connection c = DbUtil.getConn();
-			ArrayList<Order> currentOrders = OrderDao.loadAllByStatus(c, status);
-			request.setAttribute("orders", currentOrders);
-			
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			Customer customer = CustomerDao.loadById(c, id);
+			request.setAttribute("customer", customer);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/customerDelete.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp")
-		.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			Connection c = DbUtil.getConn();
+			
+			Customer customer = new Customer();
+			customer.setId(id);
+			CustomerDao.delete(c,customer);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/changesSaved.jsp").forward(request, response);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

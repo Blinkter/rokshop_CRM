@@ -34,9 +34,8 @@ public class EmployeeView extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection c;
 		try {
-			c = DbUtil.getConn();
+			Connection c = DbUtil.getConn();
 			ArrayList<Employee> currentEmloyee = EmployeeDao.loadAll(c);
 			request.setAttribute("employees", currentEmloyee);
 		} catch (SQLException e) {

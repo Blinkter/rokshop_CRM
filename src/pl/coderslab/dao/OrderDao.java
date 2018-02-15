@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import pl.coderslab.model.Employee;
 import pl.coderslab.model.Order;
 
 public class OrderDao {
@@ -110,6 +111,65 @@ public class OrderDao {
 		return orders;
 	}
 
+	
+	public static ArrayList<Order> loadAllByStatus(Connection c, String status) throws SQLException{
+		ArrayList<Order> orders = new ArrayList<Order>();
+		String sql = "select * from orders where status=?";
+		PreparedStatement preparedStatement;
+		preparedStatement = c.prepareStatement(sql);
+		preparedStatement.setString(1, status);
+		ResultSet rs = preparedStatement.executeQuery();
+
+		if (rs.next()) {
+			Order loadedOrder = new Order();
+			loadedOrder.setId(rs.getInt("id"));
+			loadedOrder.setAccepted(rs.getDate("accepted"));
+			loadedOrder.setPlanned_begin(rs.getDate("planned_begin"));
+			loadedOrder.setBegin(rs.getDate("begin"));
+			loadedOrder.setOrder_employee_id(rs.getInt("order_employee_id"));
+			loadedOrder.setProblem_description(rs.getString("problem_description"));
+			loadedOrder.setRepair_description(rs.getString("repair_description"));
+			loadedOrder.setOrder_vehicle_id(rs.getInt("order_vehicle_id"));
+			loadedOrder.setStatus(rs.getString("status"));
+			loadedOrder.setRepair_cost_for_customer(rs.getDouble("repair_cost_for_customer"));
+			loadedOrder.setParts_cost(rs.getDouble("parts_cost"));
+			loadedOrder.setHours_amount(rs.getDouble("hours_amount"));
+
+			orders.add(loadedOrder);
+		}
+		return orders;
+	}
+	
+	public static ArrayList<Order> loadAllByEmployee(Connection c, Employee employee) throws SQLException{
+	
+			
+		ArrayList<Order> orders = new ArrayList<Order>();
+		String sql = "select * from orders where order_employee_id = ?";
+		PreparedStatement preparedStatement;
+		preparedStatement = c.prepareStatement(sql);
+		preparedStatement.setInt(1, employee.getId());
+		ResultSet rs = preparedStatement.executeQuery();
+
+		if (rs.next()) {
+			Order loadedOrder = new Order();
+			loadedOrder.setId(rs.getInt("id"));
+			loadedOrder.setAccepted(rs.getDate("accepted"));
+			loadedOrder.setPlanned_begin(rs.getDate("planned_begin"));
+			loadedOrder.setBegin(rs.getDate("begin"));
+			loadedOrder.setOrder_employee_id(rs.getInt("order_employee_id"));
+			loadedOrder.setProblem_description(rs.getString("problem_description"));
+			loadedOrder.setRepair_description(rs.getString("repair_description"));
+			loadedOrder.setOrder_vehicle_id(rs.getInt("order_vehicle_id"));
+			loadedOrder.setStatus(rs.getString("status"));
+			loadedOrder.setRepair_cost_for_customer(rs.getDouble("repair_cost_for_customer"));
+			loadedOrder.setParts_cost(rs.getDouble("parts_cost"));
+			loadedOrder.setHours_amount(rs.getDouble("hours_amount"));
+
+			orders.add(loadedOrder);
+		}
+		return orders;
+	}
+	
 	public static void delete(Connection c, Order order) throws SQLException {
 		if (order.getId() != 0) {
 			String sql = "delete from users where id = ?";
@@ -120,4 +180,5 @@ public class OrderDao {
 			order.setId(0);
 		}
 	}
+
 }

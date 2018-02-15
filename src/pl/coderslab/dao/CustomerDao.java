@@ -10,7 +10,7 @@ import pl.coderslab.model.Customer;
 
 public class CustomerDao {
 
-	public void saveToDB(Connection c, Customer customer) throws SQLException {
+	public static void saveToDB(Connection c, Customer customer) throws SQLException {
 		if (customer.getId() == 0) {
 			String sql = "INSERT INTO customers (firstname, surname, birthday) VALUES (?,?,?);";
 			String generatedColumns[] = { "id" };
@@ -28,13 +28,14 @@ public class CustomerDao {
 			}
 			preparedStatement.close();
 		} else {
-			String sql = "UPDATE customers SET firstname=?, surname=? birthday=? where id = ?";
+			String sql = "UPDATE customers SET firstname=?, surname=?, birthday=? where id = ?";
 
 			PreparedStatement preparedStatement;
 			preparedStatement = c.prepareStatement(sql);
 			preparedStatement.setString(1, customer.getFirstname());
 			preparedStatement.setString(2, customer.getSurname());
 			preparedStatement.setDate(3, customer.getBirthday());
+			preparedStatement.setInt(4, customer.getId());
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
 		}

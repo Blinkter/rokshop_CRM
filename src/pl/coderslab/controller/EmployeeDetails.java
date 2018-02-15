@@ -11,21 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.coderslab.dao.EmployeeDao;
 import pl.coderslab.dao.OrderDao;
+import pl.coderslab.model.Employee;
 import pl.coderslab.model.Order;
 import pl.coderslab.service.DbUtil;
 
 /**
- * Servlet implementation class index
+ * Servlet implementation class EmployeeDetails
  */
-@WebServlet("/index")
-public class Index extends HttpServlet {
+@WebServlet("/employeeDetails")
+public class EmployeeDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public EmployeeDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +36,21 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String status = "W naprawie";
 		try {
+			int id = Integer.parseInt(request.getParameter("id"));
 			Connection c = DbUtil.getConn();
-			ArrayList<Order> currentOrders = OrderDao.loadAllByStatus(c, status);
-			request.setAttribute("orders", currentOrders);
+			Employee employee = EmployeeDao.loadById(c, id);
 			
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			ArrayList<Order> orders = OrderDao.loadAllByEmployee(c, employee);
+			System.out.println(orders);
+			System.out.println(employee);
+			request.setAttribute("orders", orders);
+			request.setAttribute("employee", employee);
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/views/employeeDetails.jsp").forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp")
-		.forward(request, response);
 	}
 
 	/**

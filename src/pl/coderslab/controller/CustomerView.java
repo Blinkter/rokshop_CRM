@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.OrderDao;
-import pl.coderslab.model.Order;
+import pl.coderslab.dao.CustomerDao;
+import pl.coderslab.model.Customer;
 import pl.coderslab.service.DbUtil;
 
 /**
- * Servlet implementation class index
+ * Servlet implementation class CustomerView
  */
-@WebServlet("/index")
-public class Index extends HttpServlet {
+@WebServlet("/customerView")
+public class CustomerView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public CustomerView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +34,17 @@ public class Index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String status = "W naprawie";
 		try {
 			Connection c = DbUtil.getConn();
-			ArrayList<Order> currentOrders = OrderDao.loadAllByStatus(c, status);
-			request.setAttribute("orders", currentOrders);
-			
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			ArrayList<Customer> currentCustomer = CustomerDao.loadAll(c);
+			request.setAttribute("customers", currentCustomer);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp")
+		getServletContext().getRequestDispatcher("/WEB-INF/views/customerView.jsp")
 		.forward(request, response);
+		
 	}
 
 	/**

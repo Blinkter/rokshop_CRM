@@ -8,43 +8,37 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="container">
 		<%@ include file="../header.jsp" %>
 		
 		<div class=class="table-responsive">
-		<h1>Pracownicy</h1>
+		<h1>Klienci</h1>
 		<table class="table table-striped">
 			<tr>
 				<th>Imię</th>
 				<th>Nazwisko</th>
-				<th>Adres</th>
-				<th>Numer telefonu</th>
-				<th>Adnotacje</th>
-				<th>Stawka godzinowa</th>
+				<th>Data urodzenia</th>
 				<th>Opcje</th>
 			</tr>
-			<c:forEach items="${employees}" var="employee">
+			<c:forEach items="${customers}" var="customer">
 			<tr>
-	    		 <td>${employee.firstname}</td>
-	    		 <td>${employee.surname}</td>
-	    		 <td>${employee.address}</td>
-	    		 <td>${employee.phone_number}</td>
-	    		 <td>${employee.note}</td>
-	    		 <td>${employee.hour_rate}</td>
+	    		 <td>${customer.firstname}</td>
+	    		 <td>${customer.surname}</td>
+	    		 <td>${customer.birthday}</td>
 	    		 <td>
-		    		 <a href="employeeEdit?id=${employee.id }">Edytuj</a>
+	    		 	<a href="customerEdit?id=${customer.id }">Edytuj</a>
 		    		 /
-		    		 <a href="employeeDelete?id=${employee.id }">Usuń</a>
-		    		 /
-		    		 <a href="employeeDetails?id=${employee.id }">Zlecenia</a>
-	    		 </td>
+		    		 <a href="customerDelete?id=${customer.id }">Usuń</a>
+			     </td>
 			</tr>
 	 		</c:forEach>
 		</table>
-			<a href="employeeAdd">Dodaj pracownika</a>
+			<a href="customerAdd">Dodaj klienta</a>
 		</div>
 		<%@ include file="../footer.jsp" %>
 		
 	</div>
+
 </body>
 </html>
