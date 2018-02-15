@@ -19,6 +19,7 @@
 				<th>Imię</th>
 				<th>Nazwisko</th>
 				<th>Data urodzenia</th>
+				<th>Samochód</th>
 				<th>Opcje</th>
 			</tr>
 			<c:forEach items="${customers}" var="customer">
@@ -26,6 +27,9 @@
 	    		 <td>${customer.firstname}</td>
 	    		 <td>${customer.surname}</td>
 	    		 <td>${customer.birthday}</td>
+	    		 <td>
+	    		 	<a href="vehicleView?id=${customer.id }">Pokaż</a>
+				</td>
 	    		 <td>
 	    		 	<a href="customerEdit?id=${customer.id }">Edytuj</a>
 		    		 /

@@ -64,6 +64,30 @@ public class VehicleDao {
 		}
 		return null;
 	}
+	
+	public static ArrayList<Vehicle> loadByCustomerId(Connection c, int customer_id) throws SQLException {
+		
+		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+		String sql = "select * from vehicles where customer_id = ?";
+		PreparedStatement PreparedStatement;
+		PreparedStatement = c.prepareStatement(sql);
+		PreparedStatement.setInt(1, customer_id);
+		ResultSet rs = PreparedStatement.executeQuery();
+
+		while (rs.next()) {
+			Vehicle loadedVehicle = new Vehicle();
+			loadedVehicle.setId(rs.getInt("id"));
+			loadedVehicle.setBrand(rs.getString("brand"));
+			loadedVehicle.setModel(rs.getString("model"));
+			loadedVehicle.setYear(rs.getInt("year"));
+			loadedVehicle.setReg_number(rs.getString("reg_number"));
+			loadedVehicle.setNext_service(rs.getDate("next_service"));
+			loadedVehicle.setCustomer_id(rs.getInt("customer_id"));
+			vehicles.add(loadedVehicle);
+		}
+
+		return vehicles;
+	}
 
 	public static ArrayList<Vehicle> loadAll(Connection c) throws SQLException {
 		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
