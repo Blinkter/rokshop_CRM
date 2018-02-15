@@ -57,10 +57,10 @@ public class EmployeeDao {
 			loadedEmployee.setId(rs.getInt("id"));
 			loadedEmployee.setFirst_name(rs.getString("firstname"));
 			loadedEmployee.setSurname(rs.getString("surname"));
-			loadedEmployee.setAddress(rs.getString("email"));
-			loadedEmployee.setPhone_number(rs.getInt("phonenumber"));
+			loadedEmployee.setAddress(rs.getString("address"));
+			loadedEmployee.setPhone_number(rs.getInt("phone_number"));
 			loadedEmployee.setNote(rs.getString("note"));
-			loadedEmployee.setHour_rate(rs.getDouble("hourly_rate"));
+			loadedEmployee.setHour_rate(rs.getDouble("hour_rate"));
 			return loadedEmployee;
 		}
 		return null;
@@ -78,10 +78,10 @@ public class EmployeeDao {
 			loadedEmployee.setId(rs.getInt("id"));
 			loadedEmployee.setFirst_name(rs.getString("firstname"));
 			loadedEmployee.setSurname(rs.getString("surname"));
-			loadedEmployee.setAddress(rs.getString("email"));
-			loadedEmployee.setPhone_number(rs.getInt("phonenumber"));
+			loadedEmployee.setAddress(rs.getString("address"));
+			loadedEmployee.setPhone_number(rs.getInt("phone_number"));
 			loadedEmployee.setNote(rs.getString("note"));
-			loadedEmployee.setHour_rate(rs.getDouble("hourly_rate"));
+			loadedEmployee.setHour_rate(rs.getDouble("hour_rate"));
 			employees.add(loadedEmployee);
 		}
 

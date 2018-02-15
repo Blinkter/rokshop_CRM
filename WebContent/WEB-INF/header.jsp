@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <title>Insert title here</title>
 </head>
 <body>
-	<p>tutaj będzie menu</p>
+	<a href="http://localhost:8080/workshop_CRM/index">Index</a>
+	<a href="http://localhost:8080/workshop_CRM/employeeView">Pracownicy</a>
+	
 </body>
 </html>

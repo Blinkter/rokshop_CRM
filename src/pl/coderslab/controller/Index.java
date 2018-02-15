@@ -19,13 +19,13 @@ import pl.coderslab.service.DbUtil;
  * Servlet implementation class index
  */
 @WebServlet("/index")
-public class index extends HttpServlet {
+public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public index() {
+    public Index() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String status = "In repair";
+		String status = "W naprawie";
 		try {
 			Connection c = DbUtil.getConn();
 			ArrayList<Order> currentOrders = OrderDao.loadAll(c);
