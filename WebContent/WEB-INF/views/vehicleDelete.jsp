@@ -7,16 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="container">
 		<%@ include file="../header.jsp" %>
 		
-		<h1>Czy chcesz usunąć klienta: ${customer.firstname} ${customer.surname} ?</h1>
+		<h1>Czy chcesz samochód: ${vehicle.brand} ${vehicle.model} ${vehicle.year}?</h1>
 	
-		<form action="customerDelete" method="post">
-			<button class="btn btn-default" name="id" type="submit" value="${customer.id }">Usuń</button>	
+		<form action="vehicleDelete" method="post">
+			<button name="id" type="submit" value="${vehicle.id }">Usuń</button>	
 		</form>
 		
 		<%@ include file="../footer.jsp" %>
 	</div>
+
 </body>
 </html>

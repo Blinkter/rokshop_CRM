@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import pl.coderslab.model.Customer;
 import pl.coderslab.model.Vehicle;
 
 public class VehicleDao {
@@ -65,13 +66,13 @@ public class VehicleDao {
 		return null;
 	}
 	
-	public static ArrayList<Vehicle> loadByCustomerId(Connection c, int customer_id) throws SQLException {
+	public static ArrayList<Vehicle> loadByCustomerId(Connection c, Customer customer) throws SQLException {
 		
 		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 		String sql = "select * from vehicles where customer_id = ?";
 		PreparedStatement PreparedStatement;
 		PreparedStatement = c.prepareStatement(sql);
-		PreparedStatement.setInt(1, customer_id);
+		PreparedStatement.setInt(1, customer.getId());
 		ResultSet rs = PreparedStatement.executeQuery();
 
 		while (rs.next()) {

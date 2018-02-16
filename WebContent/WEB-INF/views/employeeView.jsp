@@ -41,7 +41,7 @@
 			</tr>
 	 		</c:forEach>
 		</table>
-			<a href="employeeAdd">Dodaj pracownika</a>
+		<a href="employeeAdd">Dodaj pracownika</a>
 		</div>
 		<%@ include file="../footer.jsp" %>
 		

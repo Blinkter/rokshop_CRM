@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
 		<%@ include file="../header.jsp" %>
 		
 		<div class=class="table-responsive">
-		<h1>Samochody klienta</h1>
+		<h1>Samochody klienta ${customer.firstname} ${customer.surname}</h1>
 		<table class="table table-striped">
 			<tr>
 				<th>Marka</th>
@@ -21,6 +21,8 @@
 				<th>Rok produkcji</th>
 				<th>Numer rejestracyjny</th>
 				<th>Następny przegląd</th>
+				<th>Historia pojazdu</th>
+				<th>Opcje</th>
 			</tr>
 			<c:forEach items="${vehicles}" var="vehicle">
 			<tr>
@@ -29,13 +31,20 @@
 	    		 <td>${vehicle.year}</td>
 	    		 <td>${vehicle.reg_number}</td>
 	    		 <td>${vehicle.next_service}</td>
+	    		 <td>
+	    		 	<a href="vehicleHistory?id=${vehicle.id }">Historia napraw</a>
+	    		 </td>
+	    		 <td>
+	    		 	<a href="vehicleEdit?id=${vehicle.id }">Edytuj</a>
+		    		 /
+		    		 <a href="vehicleDelete?id=${vehicle.id }">Usuń</a>
+			     </td>
 			</tr>
 	 		</c:forEach>
 		</table>
-			
-		<%@ include file="../footer.jsp" %>
+		<a href="vehicleAdd?id=${customer.id}">Dodaj samochód</a>
 		</div>
-		
+		<%@ include file="../footer.jsp" %>
 	</div>
 
 </body>

@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
 	<div class="container">
 		<%@ include file="../header.jsp" %>
 			
 			<h1>Edytuj klienta: ${customer.firstname} ${customer.surname}</h1>
 			<div class="form-group">
-				<form role="form" action="customerEdit?id=${customer.id}" method="post">
+				<form action="customerEdit?id=${customer.id}" method="post">
 					<label for="firstname">Imię:</label>
 					<input class="form-control" type="text" name="firstname" value="${customer.firstname}">
 					

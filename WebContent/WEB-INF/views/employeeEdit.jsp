@@ -7,21 +7,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../header.jsp" %>
-	<h1>Edytuj pracownika:  ${employee.firstname} ${employee.surname}</h1>
-
-	<form action="employeeEdit" method="post">
-		
-		<input type="text" name="firstname" value="${employee.firstname}" /><br>
-		<input type="text" name="surname" value="${employee.surname}" /><br>
-		<input type="address" name="address" value="${employee.address}" /><br>
-		<input type="tel" name="phoneNumber" value="${employee.phone_number}" /><br>
-		<input type="text" name="note" value="${employee.note}"><br>
-		<input type="number" step="0.01" name="hourRate" value="${employee.hour_rate}" /><br>
-		<button name="id" type="submit" value="${employee.id }">Zapisz zmiany</button>
+	<div class="container">
+		<%@ include file="../header.jsp" %>
+		<h1>Edytuj pracownika:  ${employee.firstname} ${employee.surname}</h1>
 	
-	</form>
-	<%@ include file="../footer.jsp" %>
-
+		<div class="form-group">
+			<form action="employeeEdit" method="post">
+			
+				<label for="firstname">Imię:</label>
+				<input class="form-control" type="text" name="firstname" value="${employee.firstname}" />
+				
+				<label for="surname">Nazwisko:</label>
+				<input class="form-control" type="text" name="surname" value="${employee.surname}" />
+				
+				<label for="address">Adres:</label>
+				<input class="form-control" type="address" name="address" value="${employee.address}" />
+				
+				<label for="phoneNumber">Numer telefonu:</label>
+				<input class="form-control" type="tel" name="phoneNumber" value="${employee.phone_number}" />
+				
+				<label for="note">Adnotacje:</label>
+				<input class="form-control" type="text" name="note" value="${employee.note}">
+				
+				<label for="hourRate">Stawka godzinowa:</label>
+				<input class="form-control" type="number" step="0.01" name="hourRate" value="${employee.hour_rate}" />
+				
+				<button class="btn btn-default" name="id" type="submit" value="${employee.id }">Zapisz zmiany</button>
+			</form>
+		</div>
+		<%@ include file="../footer.jsp" %>
+	</div>
 </body>
 </html>
