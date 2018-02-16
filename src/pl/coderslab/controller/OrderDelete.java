@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pl.coderslab.dao.EmployeeDao;
-import pl.coderslab.model.Employee;
+import pl.coderslab.dao.OrderDao;
+import pl.coderslab.model.Order;
 import pl.coderslab.service.DbUtil;
 
 /**
- * Servlet implementation class employeeDelete
+ * Servlet implementation class OrderDelete
  */
-@WebServlet("/employeeDelete")
-public class employeeDelete extends HttpServlet {
+@WebServlet("/orderDelete")
+public class OrderDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public employeeDelete() {
+    public OrderDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,9 +36,9 @@ public class employeeDelete extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Connection c = DbUtil.getConn();
-			Employee employee = EmployeeDao.loadById(c, id);
-			request.setAttribute("employee", employee);
-			getServletContext().getRequestDispatcher("/WEB-INF/views/employeeDelete.jsp").forward(request, response);
+			Order order = OrderDao.loadById(c, id);
+			request.setAttribute("order", order);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/orderDelete.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,9 +52,9 @@ public class employeeDelete extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Connection c = DbUtil.getConn();
 			
-			Employee employee = new Employee();
-			employee.setId(id);
-			EmployeeDao.delete(c,employee);
+			Order order = new Order();
+			order.setId(id);
+			OrderDao.delete(c,order);
 			getServletContext().getRequestDispatcher("/WEB-INF/views/changesSaved.jsp").forward(request, response);
 			
 		} catch (SQLException e) {

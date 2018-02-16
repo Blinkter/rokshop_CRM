@@ -10,10 +10,10 @@
 	<div class="container">
 		<%@ include file="../header.jsp" %>
 		
-		<h1>Czy chcesz usunąć pracownika ${employee.firstname} ${employee.surname} ?</h1>
+		<h1>Czy chcesz usunąć zamówienie?</h1>
 	
-		<form action="employeeDelete" method="post">
-			<button name="id" type="submit" value="${employee.id }">Usuń</button>	
+		<form action="orderDelete" method="post">
+			<button class="btn btn-default" name="id" type="submit" value="${order.id }">Usuń</button>	
 		</form>
 		
 		<%@ include file="../footer.jsp" %>

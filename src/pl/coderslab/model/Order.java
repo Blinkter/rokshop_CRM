@@ -20,7 +20,7 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(Date accepted, Date lanned_begin, Date begin, int order_employee_id, String problem_description,
+	public Order(Date accepted, Date planned_begin, Date begin, int order_employee_id, String problem_description,
 			String repair_description, String status, int order_vehicle_id, double repair_cost_for_customer,
 			double parts_cost, int hours_amount) {
 		super();

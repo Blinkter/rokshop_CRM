@@ -172,7 +172,7 @@ public class OrderDao {
 	
 	public static void delete(Connection c, Order order) throws SQLException {
 		if (order.getId() != 0) {
-			String sql = "delete from users where id = ?";
+			String sql = "delete from orders where id = ?";
 			PreparedStatement preparedStatement;
 			preparedStatement = c.prepareStatement(sql);
 			preparedStatement.setInt(1, order.getId());
