@@ -18,13 +18,13 @@ import pl.coderslab.service.DbUtil;
  * Servlet implementation class employeeDelete
  */
 @WebServlet("/employeeDelete")
-public class employeeDelete extends HttpServlet {
+public class EmployeeDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public employeeDelete() {
+    public EmployeeDelete() {
         super();
         // TODO Auto-generated constructor stub
     }

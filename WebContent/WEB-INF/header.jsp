@@ -12,6 +12,7 @@
 	<a href="http://localhost:8080/workshop_CRM/employeeView">Pracownicy</a>
 	<a href="http://localhost:8080/workshop_CRM/customerView">Klienci</a>
 	<a href="http://localhost:8080/workshop_CRM/orderView">Naprawy</a>
+	<a href="http://localhost:8080/workshop_CRM/raportView">Raport</a>
 	
 </body>
 </html>
